@@ -1,4 +1,4 @@
-import Node
+from Node import Node
 
 class LinkedList(object):
 	
@@ -19,8 +19,8 @@ class LinkedList(object):
 		self.head = node
 
 	def delete(self, key):
-		node_to_delete = self.search(key)
-		if node_to_delete is None:
+		node = self.search(key)
+		if node is None:
 			raise ValueError("Key not in list")
 		if node.get_prev() is not None:
 			node.get_prev().set_next(node.get_next())
