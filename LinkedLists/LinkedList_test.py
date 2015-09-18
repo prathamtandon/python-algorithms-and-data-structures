@@ -59,3 +59,12 @@ def test_delete_head():
 	assert l_list.head.get_key() == "Superman"
 	l_list.delete("Superman")
 	assert l_list.head.get_key() == "Batman"
+	
+def test_size(): 
+	l_list = LinkedList()
+	assert l_list.size() == 0
+	l_list.insert("Batman")
+	l_list.insert("Superman")
+	assert l_list.size() == 2
+	l_list.delete("Superman")
+	assert l_list.size() == 1
