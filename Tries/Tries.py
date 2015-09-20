@@ -1,3 +1,5 @@
+import Queue
+
 class Trie:
 	
 	def __init__(self):
@@ -7,15 +9,15 @@ class Trie:
 	
 	def insert_key(self, key, value):
 		cur = self
-		for i in enumerate(key):
+		for i, c in enumerate(key):
 			match = None
 			for child in cur.children:
-				if child.key == key[:i]:
+				if child.key == key[:i + 1]:
 					match = child
 					break
-			if match == None:
-				new_child = new Trie()
-				new_child.key = key[:i]
+			if match is None:
+				new_child = Trie()
+				new_child.key = key[:i + 1]
 				cur.children.append(new_child)
 				cur = new_child
 			else:
@@ -24,13 +26,13 @@ class Trie:
 	
 	def has_key(self, key):
 		cur = self
-		for i in enumerate(key):
+		for i, c in enumerate(key):
 			match = None
 			for child in cur.children:
-				if child.key == key[:i]:
+				if child.key == key[:i + 1]:
 					match = child
 					break
-			if match == None:
+			if match is None:
 				return False
 			else:
 				cur = match
@@ -38,16 +40,16 @@ class Trie:
 		
 	def retrieve_val(self, key):
 		cur = self
-		for i in enumerate(key):
+		for i, c in enumerate(key):
 			match = None
 			for child in cur.children:
-				if child.key == key[:i]:
+				if child.key == key[:i + 1]:
 					match = child
 					break
-				if match == None:
-					return None
-				else:
-					cur = match
+			if match is None:
+				return None
+			else:
+				cur = match
 		return cur.value
 		
 	def starts_with_prefix(self, key):
@@ -55,13 +57,13 @@ class Trie:
 		if not self.has_key(key):
 			return items
 		cur = self
-		for i in enumerate(key):
+		for i, c in enumerate(key):
 			for child in cur.children:
-				if child.key == key[:i]:
+				if child.key == key[:i + 1]:
 					cur = child
 					break
 		
-		Q = new Queue()
+		Q = Queue.Queue()
 		Q.put(cur)
 		while not Q.empty():
 			cur = Q.get()
