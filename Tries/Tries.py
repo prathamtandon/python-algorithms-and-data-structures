@@ -1,4 +1,5 @@
 import Queue
+import bisect
 
 class Trie:
 	
@@ -18,7 +19,9 @@ class Trie:
 			if match is None:
 				new_child = Trie()
 				new_child.key = key[:i + 1]
-				cur.children.append(new_child)
+				keys = [child.key for child in cur.children]
+				insert_at = bisect.bisect_left(keys, new_child.key)
+				cur.children.insert(insert_at, new_child)
 				cur = new_child
 			else:
 				cur = match
@@ -73,4 +76,16 @@ class Trie:
 				Q.put(child)
 		
 		return items
+	
+	def lexicographic_sort(self):
+		def lexicographic_sort_helper(cur, acc):
+			if cur.key is None and len(cur.children) == 0:
+				return acc
+			if cur.value is not None:
+				acc.append(cur.key)
+			for child in cur.children:
+				lexicographic_sort_helper(child, acc)
+			return acc
+		
+		return lexicographic_sort_helper(self, [])
 			
