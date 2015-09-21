@@ -1,31 +1,31 @@
 class BinarySearchTree:
 	
 	def __init__(self):
-		self = None
+		self.root = None
 		
-	def inorder_walk(self):
-		if self is not None:
-			inorder_tree_walk(self.left)
-			print(self.key, end=" ")
-			inorder_tree_walk(self.right)
+	def inorder_walk(self, node):
+		if node is not None:
+			self.inorder_walk(node.left)
+			print node.key,
+			self.inorder_walk(node.right)
 	
 	def search(self, key):
-		cur = self
+		cur = self.root
 		while cur is not None and cur.key is not key:
-			if cur.key < key:
+			if key < cur.key:
 				cur = cur.left
 			else:
 				cur = cur.right
 		return cur
 	
-	def minimum(self):
-		cur = self
+	def minimum(self, node):
+		cur = node
 		while cur is not None and cur.left is not None:
 			cur = cur.left
 		return cur
 	
-	def maximum(self):
-		cur = self
+	def maximum(self, node):
+		cur = node
 		while cur is not None and cur.right is not None:
 			cur = cur.right
 		return cur
@@ -50,7 +50,7 @@ class BinarySearchTree:
 		
 	def insert(self, node):
 		parent = None
-		cur = self
+		cur = self.root
 		while cur is not None:
 			parent = cur
 			if node.key < cur.key:
@@ -59,7 +59,7 @@ class BinarySearchTree:
 				cur = cur.right
 		node.parent = parent
 		if parent is None: # tree was empty
-			self = node
+			self.root = node
 		elif node.key < parent.key:
 			parent.left = node
 		else:
@@ -68,7 +68,7 @@ class BinarySearchTree:
 	# replaces src node with target node in the BST 
 	def transplant(self, src, target):
 		if src.parent is None:
-			self = target
+			self.root = target
 		elif src == src.parent.left:
 			src.parent.left = target
 		else:
