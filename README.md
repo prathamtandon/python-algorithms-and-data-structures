@@ -4,3 +4,4 @@ installed. Also, following data structures have been implemented
 in Python:
 * Linked Lists (double links)
 * Tries
+* Binary Search Trees
