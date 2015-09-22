@@ -26,9 +26,9 @@ def IsPermutationOfPalindrome(phrase):
 # maps a char to an integer, like 'a' is mapped to 0, 'b' to 1,
 # 'c' to 2 and so on	
 def get_char_number(c):
-	if ord(c) >= ord('a') and ord(c) <= ord('z'):
+	if ord('a') <= ord(c) <= ord('z'):
 		return ord(c) - ord('a')
-	elif ord(c) >= ord('A') and ord(c) <= ord('Z'):
+	elif ord('A') <= ord(c) <= ord('Z'):
 		return ord(c) - ord('A')
 	return -1
 
