@@ -1,10 +1,11 @@
 # Given an image represented by an NxN matrix, where each pixel in
 # image is 4 bytes, rotates the image by 90 degrees.
 
-# NOTE: The solution becomes much more clearer when we take an
+# NOTE: The solution becomes much more clear when we take an
 # actual matrix and run multiple iterations to swap by-hand.
 
 def rotate_image(matrix, N):
+	# layers move from outermost to innermost
     for layer in range(N/2):
         first = layer
         last = N - layer - 1
