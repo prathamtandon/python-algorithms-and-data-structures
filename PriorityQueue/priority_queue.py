@@ -15,13 +15,13 @@ class PriorityQueue:
 		return 2*i+2
 	
 	def max_heapify(self, i):
-		left = self.left(i)
-		right = self.right(i)
+		l = self.left(i)
+		r = self.right(i)
 		largest = i
 		
-		if l <= len(self.items) and self.items[l] > self.items[largest]:
+		if l < len(self.items) and self.items[l] > self.items[largest]:
 			largest = l
-		if r <= len(self.items) and self.items[r] > self.items[largest]:
+		if r < len(self.items) and self.items[r] > self.items[largest]:
 			largest = r
 		
 		if largest != i:
