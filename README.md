@@ -7,3 +7,4 @@ in Python:
 * Binary Search Trees
 * Stacks
 * Queues
+* Priority Queues (Min heap)
