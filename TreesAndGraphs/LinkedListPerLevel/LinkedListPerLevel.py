@@ -4,7 +4,6 @@ class Node:
         self.left = None
         self.right = None
 
-
 def LinkedListPerLevel(root):
     if root is None:
         return []
@@ -19,18 +18,14 @@ def LinkedListPerLevel(root):
                 cur_list.append(parent.left)
             if parent.right is not None:
                 cur_list.append(parent.right)
-
     return l_lists
 
 def LinkedListPerLevel_r(node, level, lists):
     if node is None:
         return
-    cur_depth_list = []
     if len(lists) == level:
-        lists.append(cur_depth_list)
-    else:
-        cur_depth_lists = lists[level]
+        lists.append([])
 
-    cur_depth_list.append(node)
+    lists[level].append(node)
     LinkedListPerLevel_r(node.left, level + 1, lists)
     LinkedListPerLevel_r(node.right, level + 1, lists)
