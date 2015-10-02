@@ -3,10 +3,8 @@
 # One way is to implement an inorder traversel and check if its in
 # sorted order.
 
-from math import inf
-
 def checkBST(node):
-    checkBST_helper(node, inf, -inf)
+    return checkBST_helper(node, -float('Inf'), float('Inf'))
 
 def checkBST_helper(node, minimum, maximum):
     if node is None:
