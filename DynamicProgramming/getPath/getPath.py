@@ -8,6 +8,8 @@ class Point:
         self.y = y
     def __eq__(self, rhs):
         return self.x == rhs.x and self.y == rhs.y
+    def __hash__(self):
+		return hash((self.x, self.y))
 
 def getPath(maze):
     if maze is None or len(maze) == 0:
@@ -15,19 +17,24 @@ def getPath(maze):
     r = len(maze)
     c = len(maze[0])
     path = []
-    if getPath_helper(Point(r-1,c-1), maze, path):
+    cache = {}
+    if getPath_helper(Point(r-1,c-1), maze, path, cache):
         return path
     else:
         return None
 
-def getPath_helper(location, maze, path):
+def getPath_helper(location, maze, path, cache):
     x = location.x
     y = location.y
     if x < 0 or y < 0 or not maze[x][y]:
         return False
-    if location == Point(0,0) or getPath_helper(Point(x-1,y), maze, path) or getPath_helper(Point(x, y-1), maze, path):
+    if location in cache:
+        return cache[location]
+    if location == Point(0,0) or getPath_helper(Point(x-1,y), maze, path, cache) or getPath_helper(Point(x, y-1), maze, path, cache):
+        cache[location] = True
         path.insert(0, location)
         return True
+    cache[location] = False
     return False
 
 
