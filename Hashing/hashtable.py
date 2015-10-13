@@ -38,14 +38,16 @@ class HashTable:
     def __init__(self):
         self.table = [None]*m
 
-    def put(self, key, value):
+    def get_slot_index(self, key):
         slot_index = -1
         if isinstance(key, str):
             slot_index = get_hash(string_to_int(key))
         else:
             slot_index = get_hash(key)
+        return slot_index
 
-        print slot_index
+    def put(self, key, value):
+        slot_index = self.get_slot_index(key)
 
         if self.table[slot_index] is None:
             self.table[slot_index] = []
@@ -63,11 +65,7 @@ class HashTable:
             self.table[slot_index].insert(0, (key, value))
 
     def get(self, key):
-        slot_index = -1
-        if isinstance(key, str):
-            slot_index = get_hash(string_to_int(key))
-        else:
-            slot_index = get_hash(key)
+        slot_index = self.get_slot_index(key)
 
         if self.table[slot_index] is None:
             return None
@@ -81,5 +79,21 @@ class HashTable:
         return None
 
 
+    def remove(self, key):
+        slot_index = self.get_slot_index(key)
+
+        if self.table[slot_index] is None:
+            return
+
+        lst = self.table[slot_index]
+        index = -1
+
+        for i in range(len(lst)):
+            if lst[i][0] == key:
+                index = i
+                break
+
+        if index != -1:
+            self.table[slot_index].pop(index)
 
 

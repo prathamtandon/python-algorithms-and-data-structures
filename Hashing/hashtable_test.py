@@ -27,3 +27,22 @@ def test_get():
     assert(ht.get(20) == 110)
     assert(ht.get('cat') == 125)
     assert(ht.get('meow') == 'blah!')
+
+def test_remove():
+    ht = HashTable()
+
+    # test with integer keys
+    ht.put(9, 100)
+    ht.put(20, 110)
+
+    # test with string keys
+    ht.put('cat', 125)
+    ht.put('meow', 'blah!')
+
+    ht.remove(9)
+    ht.remove('cat')
+
+    assert(ht.get(9) is None)
+    assert(ht.get('cat') is None)
+    assert(ht.get(20) == 110)
+    assert(ht.get('meow') == 'blah!')
