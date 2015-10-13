@@ -8,3 +8,4 @@ in Python:
 * Stacks
 * Queues
 * Priority Queues (Min heap)
+* Hash Table (using arrays)
