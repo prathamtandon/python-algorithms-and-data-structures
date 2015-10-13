@@ -37,6 +37,7 @@ def string_to_int(string):
 class HashTable:
     def __init__(self):
         self.table = [None]*m
+        self.table_size = 0
 
     def get_slot_index(self, key):
         slot_index = -1
@@ -63,6 +64,7 @@ class HashTable:
 
         if not is_update:
             self.table[slot_index].insert(0, (key, value))
+            self.table_size += 1
 
     def get(self, key):
         slot_index = self.get_slot_index(key)
@@ -95,5 +97,9 @@ class HashTable:
 
         if index != -1:
             self.table[slot_index].pop(index)
+            self.table_size -= 1
 
+
+    def size(self):
+        return self.table_size
 
