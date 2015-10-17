@@ -35,3 +35,26 @@ def sumPairs(arr, target):
 
 
     return pairs
+
+# Solution 2: Using sorting.
+
+def sumPairs2(arr,target):
+    arr = sorted(arr)
+    first = 0
+    last = len(arr)-1
+
+    pairs = []
+
+    while first < last:
+        s = arr[first] + arr[last]
+        if s == target:
+            pairs.append(arr[first],arr[last])
+            first += 1
+            last -= 1
+        elif s < target:
+            first += 1
+        else:
+            last -= 1
+
+    return pairs
+
