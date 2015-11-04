@@ -24,7 +24,8 @@ def longest_palindrome(s):
     for i in range(1,n-1):
         i_mirror = 2*c-i
 
-        p[i] = min(r-i, p[i_mirror]) if (r>i) else 0
+        if r>i:
+            p[i] = min(r-i,p[i_mirror])
 
         # Attempt to expand palindrome centered at i
         while T[i+1+p[i]] == T[i-1-p[i]]:
