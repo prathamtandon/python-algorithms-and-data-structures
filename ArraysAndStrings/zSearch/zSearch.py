@@ -58,7 +58,9 @@ def get_z_array(string, Z):
             # For example, str = "ababab", i = 3, Right = 5
             # and Left = 2
             if (Z[k] < Right-i+1):
-                 Z[i] = Z[k];
+                Z[i] = Z[k]
+            elif (Z[k] > Right-i+1):
+                Z[i] = Right-i+1
             else:
                 # else start from Right and check manually.
                 Left = i
@@ -68,13 +70,13 @@ def get_z_array(string, Z):
                 Right -= 1
 
 def search(text, pattern):
-	concat = pattern + '$' + text
-	l = len(concat)
-	Z = [0] * l
-	get_z_array(concat, Z)
-	
-	for i in range(l):
-		if Z[i] == len(pattern):
-			return i-len(pattern)-1
-	
-	return -1
+    concat = pattern + '$' + text
+    l = len(concat)
+    Z = [0] * l
+    get_z_array(concat, Z)
+
+    for i in range(l):
+        if Z[i] == len(pattern):
+            return i-len(pattern)-1
+
+    return -1
