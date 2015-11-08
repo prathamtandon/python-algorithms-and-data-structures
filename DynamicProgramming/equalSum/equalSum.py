@@ -4,6 +4,7 @@
 # Examples:
 # Input n = 1, Output 2, 00 and 11
 # Input n = 2, Output 6, 0000,0101,1010,1111,0110,1001
+# and so on.
 
 # The main idea is as follows:
 # Compare first and last bits. 
