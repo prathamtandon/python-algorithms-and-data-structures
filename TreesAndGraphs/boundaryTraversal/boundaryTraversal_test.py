@@ -27,6 +27,4 @@ def test_boundaryTraversal():
         
         output  = [20,8,4,10,14,25,22]
         
-        res = boundaryTraversal(root)
-        print res
-        assert(res == output)
+        assert(boundaryTraversal(root) == output)
