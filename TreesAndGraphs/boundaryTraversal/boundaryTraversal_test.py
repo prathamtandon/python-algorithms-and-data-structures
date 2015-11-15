@@ -10,7 +10,7 @@ class Node:
 def test_boundaryTraversal():
         root = Node(20)
         node8 = Node(8)
-        node22 = Node(22)
+        node22 = Node(21)
         node4 = Node(4)
         node12 = Node(12)
         node25 = Node(25)
@@ -25,6 +25,6 @@ def test_boundaryTraversal():
         node12.left = node10
         node12.right = node14
         
-        output  = [20,8,4,10,14,25,22]
+        output  = [20,8,4,10,14,25,21]
         
         assert(boundaryTraversal(root) == output)
