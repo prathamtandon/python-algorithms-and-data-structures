@@ -6,3 +6,8 @@ def test_sumOfDigitsFrom1ToN():
     output = 3241
     
     assert(sumOfDigitsFrom1ToN(n) == output)
+    
+    n = 5
+    output = 15
+    
+    assert(sumOfDigitsFrom1ToN(n) == output)
