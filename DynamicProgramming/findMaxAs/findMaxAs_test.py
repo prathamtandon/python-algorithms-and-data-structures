@@ -6,9 +6,14 @@ def test_findMaxAs():
     output = 6
     assert(findMaxAs(n) == output)
     
+    n = 7
+    output = 9
+    assert(findMaxAs(n) == output)
+    
     n = 11
     output = 27
     assert(findMaxAs(n) == output)
+    
     
     n = 20
     output = 324
