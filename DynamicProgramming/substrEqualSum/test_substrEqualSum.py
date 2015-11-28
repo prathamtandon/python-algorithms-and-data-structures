@@ -7,7 +7,7 @@ def test_substrEqualSum ():
     
     assert(substrEqualSum (string) == output)
     
-    string = '220112'
-    output = 6
+    string = '21'
+    output = 0
     
     assert(substrEqualSum (string) == output)
