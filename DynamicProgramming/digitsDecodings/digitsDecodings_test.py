@@ -8,3 +8,8 @@ def test_countDecodings ():
     
     assert(countDecodings(digits) == output)
 
+    digits = "121"
+    output = 3
+
+    assert(countDecodings(digits) == output)
+
